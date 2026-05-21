@@ -59,6 +59,10 @@ let config = {
     HUE_SHIFT_SPEED: 0.05,
     BAND_HUES: [0.04, 0.12, 0.27, 0.465, 0.635, 0.80],
     BAND_LAYERS: false,
+    PER_BAND_TUNING: false,
+    BAND_SIZE_MULT:      [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    BAND_INTENSITY_MULT: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    BAND_VORTICITY:      [50,  40,  30,  20,  15,  10 ],
 };
 
 const AUDIO_BANDS = [
@@ -73,6 +77,7 @@ const AUDIO_BANDS = [
 let smoothedEnergy     = new Array(AUDIO_BANDS.length).fill(0);
 let prevSmoothedEnergy = new Array(AUDIO_BANDS.length).fill(0);
 let beatCooldown       = new Array(AUDIO_BANDS.length).fill(0);
+let activeCurl         = 30;
 
 document.addEventListener("DOMContentLoaded", () => {
     window.wallpaperPropertyListener = {
@@ -87,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (properties.shading) config.SHADING = properties.shading.value;
             if (properties.splat_radius) config.SPLAT_RADIUS = properties.splat_radius.value;
             if (properties.velocity_diffusion) config.VELOCITY_DISSIPATION = properties.velocity_diffusion.value;
-            if (properties.vorticity) config.CURL = properties.vorticity.value;
+            if (properties.vorticity) { config.CURL = properties.vorticity.value; if (!config.PER_BAND_TUNING) activeCurl = config.CURL; }
             if (properties.sound_sensitivity) config.SOUND_SENSITIVITY = properties.sound_sensitivity.value;
             if (properties.audio_responsive) config.AUDIO_RESPONSIVE = properties.audio_responsive.value;
             if (properties.simulation_resolution) {
@@ -172,6 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (properties.freq_color_mapping) config.FREQ_COLOR_MAPPING = properties.freq_color_mapping.value;
             if (properties.dynamic_colors)     config.DYNAMIC_COLORS     = properties.dynamic_colors.value;
             if (properties.hue_shift_speed)    config.HUE_SHIFT_SPEED    = properties.hue_shift_speed.value;
+            if (properties.per_band_tuning)    config.PER_BAND_TUNING    = properties.per_band_tuning.value;
+            const bandSuffixes = ['subbass','bass','lowmid','mid','highmid','treble'];
+            bandSuffixes.forEach((s, i) => {
+                if (properties['band_size_' + s])      config.BAND_SIZE_MULT[i]      = properties['band_size_' + s].value;
+                if (properties['band_intensity_' + s]) config.BAND_INTENSITY_MULT[i] = properties['band_intensity_' + s].value;
+                if (properties['band_vorticity_' + s]) config.BAND_VORTICITY[i]      = properties['band_vorticity_' + s].value;
+            });
             if (properties.band_layers) {
                 config.BAND_LAYERS = properties.band_layers.value;
                 initFramebuffers();
@@ -197,10 +209,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const sensitivity = config.SOUND_SENSITIVITY;
         const baseRadius  = config.SPLAT_RADIUS / 100.0;
 
+        let totalEnergy = 0;
+        let weightedCurl = 0;
+
         for (let b = 0; b < AUDIO_BANDS.length; b++) {
             const band     = AUDIO_BANDS[b];
             const binCount = band.end - band.start + 1;
             const layerIndex = Math.min(2, Math.floor(b / 2));
+            const sizeM  = config.PER_BAND_TUNING ? config.BAND_SIZE_MULT[b]      : 1;
+            const countM = config.PER_BAND_TUNING ? config.BAND_INTENSITY_MULT[b] : 1;
 
             // Separate L/R channel energies for stereo positioning
             let leftEnergy  = 0.0;
@@ -217,6 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // Exponential moving average smoothing
             smoothedEnergy[b] = config.SMOOTH_ALPHA * rawEnergy + (1 - config.SMOOTH_ALPHA) * smoothedEnergy[b];
 
+            totalEnergy  += smoothedEnergy[b];
+            weightedCurl += smoothedEnergy[b] * (config.PER_BAND_TUNING ? config.BAND_VORTICITY[b] : config.CURL);
+
             // Beat / transient detection
             const energyDelta     = smoothedEnergy[b] - prevSmoothedEnergy[b];
             prevSmoothedEnergy[b] = smoothedEnergy[b];
@@ -226,16 +246,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const hueMax = Math.min(1, config.BAND_HUES[b] + 0.06);
 
             // Regular splats — split L/R or full-width depending on STEREO_AWARENESS
-            const totalCount = Math.floor((smoothedEnergy[b] * sensitivity) * band.countMult);
+            const totalCount = Math.floor((smoothedEnergy[b] * sensitivity) * band.countMult * countM);
             if (totalCount > 0) {
                 if (config.STEREO_AWARENESS) {
                     const total      = leftEnergy + rightEnergy + 0.0001;
                     const leftCount  = Math.round(totalCount * leftEnergy  / total);
                     const rightCount = totalCount - leftCount;
-                    if (leftCount  > 0) audioSplatsPositioned(leftCount,  baseRadius * band.radius, band.colorMult, 0.25, 0.6, hueMin, hueMax, layerIndex);
-                    if (rightCount > 0) audioSplatsPositioned(rightCount, baseRadius * band.radius, band.colorMult, 0.75, 0.6, hueMin, hueMax, layerIndex);
+                    if (leftCount  > 0) audioSplatsPositioned(leftCount,  baseRadius * band.radius * sizeM, band.colorMult, 0.25, 0.6, hueMin, hueMax, layerIndex);
+                    if (rightCount > 0) audioSplatsPositioned(rightCount, baseRadius * band.radius * sizeM, band.colorMult, 0.75, 0.6, hueMin, hueMax, layerIndex);
                 } else {
-                    audioSplatsPositioned(totalCount, baseRadius * band.radius, band.colorMult, 0.5, 1.0, hueMin, hueMax, layerIndex);
+                    audioSplatsPositioned(totalCount, baseRadius * band.radius * sizeM, band.colorMult, 0.5, 1.0, hueMin, hueMax, layerIndex);
                 }
             }
 
@@ -243,13 +263,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (beatCooldown[b] > 0) {
                 beatCooldown[b]--;
             } else if (config.BEAT_DETECTION && energyDelta > config.BEAT_THRESHOLD) {
-                const burstCount = Math.floor(energyDelta * sensitivity * band.countMult * config.BEAT_BURST_MULT);
+                const burstCount = Math.floor(energyDelta * sensitivity * band.countMult * countM * config.BEAT_BURST_MULT);
                 if (burstCount > 0) {
-                    audioSplatsPositioned(burstCount, baseRadius * band.radius * 1.5, band.colorMult * 1.2, 0.5, 1.0, hueMin, hueMax, layerIndex);
+                    audioSplatsPositioned(burstCount, baseRadius * band.radius * sizeM * 1.5, band.colorMult * 1.2, 0.5, 1.0, hueMin, hueMax, layerIndex);
                     beatCooldown[b] = 8;
                 }
             }
         }
+
+        // Update active curl — energy-weighted per-band vorticity when tuning is on
+        activeCurl = totalEnergy > 0.001 ? weightedCurl / totalEnergy : config.CURL;
 
     });
 });
@@ -1139,7 +1162,7 @@ function step (dt) {
     gl.uniform2f(vorticityProgram.uniforms.texelSize, 1.0 / simWidth, 1.0 / simHeight);
     gl.uniform1i(vorticityProgram.uniforms.uVelocity, velocity.read.attach(0));
     gl.uniform1i(vorticityProgram.uniforms.uCurl, curl.attach(1));
-    gl.uniform1f(vorticityProgram.uniforms.curl, config.CURL);
+    gl.uniform1f(vorticityProgram.uniforms.curl, activeCurl);
     gl.uniform1f(vorticityProgram.uniforms.dt, dt);
     blit(velocity.write.fbo);
     velocity.swap();

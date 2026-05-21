@@ -328,6 +328,254 @@
 				"type" : "bool",
 				"value" : false
 			},
+			"per_band_tuning" :
+			{
+				"index" : 49,
+				"order" : 149,
+				"text" : "Per-Band Tuning",
+				"type" : "bool",
+				"value" : false
+			},
+			"band_size_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 50,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 150,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Sub-Bass Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_size_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 51,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 151,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Bass Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_size_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 52,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 152,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Low-Mid Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_size_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 53,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 153,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Mid Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_size_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 54,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 154,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "High-Mid Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_size_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 55,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 155,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Treble Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 56,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 156,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Sub-Bass Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 57,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 157,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Bass Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 58,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 158,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Low-Mid Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 59,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 159,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Mid Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 60,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 160,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "High-Mid Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 61,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 161,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Treble Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 62,
+				"max" : 100,
+				"min" : 0,
+				"order" : 162,
+				"text" : "Sub-Bass Vorticity",
+				"type" : "slider",
+				"value" : 50
+			},
+			"band_vorticity_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 63,
+				"max" : 100,
+				"min" : 0,
+				"order" : 163,
+				"text" : "Bass Vorticity",
+				"type" : "slider",
+				"value" : 40
+			},
+			"band_vorticity_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 64,
+				"max" : 100,
+				"min" : 0,
+				"order" : 164,
+				"text" : "Low-Mid Vorticity",
+				"type" : "slider",
+				"value" : 30
+			},
+			"band_vorticity_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 65,
+				"max" : 100,
+				"min" : 0,
+				"order" : 165,
+				"text" : "Mid Vorticity",
+				"type" : "slider",
+				"value" : 20
+			},
+			"band_vorticity_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 66,
+				"max" : 100,
+				"min" : 0,
+				"order" : 166,
+				"text" : "High-Mid Vorticity",
+				"type" : "slider",
+				"value" : 15
+			},
+			"band_vorticity_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 67,
+				"max" : 100,
+				"min" : 0,
+				"order" : 167,
+				"text" : "Treble Vorticity",
+				"type" : "slider",
+				"value" : 10
+			},
 			"idle_random_splats" : 
 			{
 				"index" : 7,

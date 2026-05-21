@@ -52,6 +52,10 @@ Key fields relevant to audio:
 | `HUE_SHIFT_SPEED` | 0.05 | Hue cycles per second — 0.05 = one full cycle every 20 s |
 | `BAND_HUES` | `[0.04,0.12,0.27,0.465,0.635,0.80]` | Center hue (0–1) for each of the 6 bands |
 | `BAND_LAYERS` | false | Render bass/mid/treble to separate depth layers |
+| `PER_BAND_TUNING` | false | Enable per-band size/intensity/vorticity overrides |
+| `BAND_SIZE_MULT` | `[1,1,1,1,1,1]` | Splat radius multiplier per band |
+| `BAND_INTENSITY_MULT` | `[1,1,1,1,1,1]` | Splat count multiplier per band |
+| `BAND_VORTICITY` | `[50,40,30,20,15,10]` | Fluid curl target per band; blended by energy |
 
 ---
 

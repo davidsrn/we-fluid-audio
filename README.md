@@ -52,6 +52,10 @@ Subscribe on the Steam Workshop: *(link coming soon)*
 | Color Shift Speed | slider | How fast the hue cycles (0.01–1.0 cycles/sec) |
 | Sub-Bass / Bass / … / Treble Color | color | Hue center for each frequency band |
 | Band Layers | bool | Render bass, mid, treble to separate depth layers |
+| Per-Band Tuning | bool | Master toggle — reveals per-band controls below |
+| Sub-Bass / … / Treble Size | slider | Splat radius multiplier per band (0.1–5×) |
+| Sub-Bass / … / Treble Intensity | slider | Splat count multiplier per band (0.1–5×) |
+| Sub-Bass / … / Treble Vorticity | slider | Fluid curl per band (0–100); blended by energy |
 | Simulation Resolution | combo | Velocity field resolution |
 | Dye Resolution | combo | Color field resolution |
 | Density Diffusion | slider | How fast colors fade |
