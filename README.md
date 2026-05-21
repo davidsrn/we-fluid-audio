@@ -25,7 +25,7 @@ An audio-reactive WebGL fluid simulation for [Wallpaper Engine](https://www.wall
 Subscribe on the Steam Workshop: *(link coming soon)*
 
 ### Manual
-1. Download or clone this repo
+1. Clone the repo: `git clone https://github.com/davidsrn/we-fluid-audio.git`
 2. In Wallpaper Engine, click **Browse** → **My Wallpapers** → **Create Wallpaper** → open `index.html`
 
 ---

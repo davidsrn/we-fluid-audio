@@ -1,5 +1,7 @@
 # Developer Guide
 
+**Repository:** [github.com/davidsrn/we-fluid-audio](https://github.com/davidsrn/we-fluid-audio)
+
 Everything you need to modify this wallpaper, add new settings, or extend the audio system.
 
 ---
