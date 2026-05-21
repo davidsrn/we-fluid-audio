@@ -1,0 +1,949 @@
+{
+	"approved" : true,
+	"contentrating" : "Everyone",
+	"description" : "Audio-reactive WebGL fluid simulation for Wallpaper Engine.\r\n\r\nBased on WebGL-Fluid-Simulation by PavelDoGreat and Delivator.",
+	"file" : "index.html",
+	"general" :
+	{
+		"properties" :
+		{
+			"schemecolor" :
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+
+			"sep_interaction" :
+			{
+				"index" : 74,
+				"order" : 1,
+				"text" : "Interaction",
+				"type" : "separator"
+			},
+			"show_mouse_movement" :
+			{
+				"index" : 0,
+				"order" : 2,
+				"text" : "Show Mouse Movement",
+				"type" : "bool",
+				"value" : true
+			},
+			"splat_on_click" :
+			{
+				"index" : 1,
+				"order" : 3,
+				"text" : "Splat on Click",
+				"type" : "bool",
+				"value" : true
+			},
+			"idle_random_splats" :
+			{
+				"index" : 7,
+				"order" : 4,
+				"text" : "Idle Random Splats",
+				"type" : "bool",
+				"value" : false
+			},
+			"random_splat_interval" :
+			{
+				"condition" : "idle_random_splats.value",
+				"fraction" : true,
+				"index" : 8,
+				"max" : 30,
+				"min" : 0,
+				"order" : 5,
+				"precision" : 2,
+				"step" : 0.1,
+				"text" : "Splat Interval",
+				"type" : "slider",
+				"value" : 1
+			},
+			"random_splat_amount" :
+			{
+				"condition" : "idle_random_splats.value",
+				"fraction" : true,
+				"index" : 9,
+				"max" : 100,
+				"min" : 1,
+				"order" : 6,
+				"precision" : 2,
+				"step" : 1,
+				"text" : "Splat Amount",
+				"type" : "slider",
+				"value" : 10
+			},
+
+			"sep_background" :
+			{
+				"index" : 75,
+				"order" : 7,
+				"text" : "Background",
+				"type" : "separator"
+			},
+			"use_background_image" :
+			{
+				"index" : 2,
+				"order" : 8,
+				"text" : "Use Background Image",
+				"type" : "bool",
+				"value" : false
+			},
+			"background_image" :
+			{
+				"condition" : "use_background_image.value",
+				"fileType" : "image",
+				"index" : 3,
+				"order" : 9,
+				"text" : "Background Image",
+				"type" : "file",
+				"value" : ""
+			},
+			"repeat_background" :
+			{
+				"condition" : "use_background_image.value",
+				"index" : 4,
+				"order" : 10,
+				"text" : "Repeat Background",
+				"type" : "bool",
+				"value" : false
+			},
+			"background_image_size" :
+			{
+				"condition" : "use_background_image.value",
+				"index" : 5,
+				"options" :
+				[
+					{
+						"label" : "Contain",
+						"value" : "contain"
+					},
+					{
+						"label" : "Cover",
+						"value" : "cover"
+					}
+				],
+				"order" : 11,
+				"text" : "Background Image Size",
+				"type" : "combo",
+				"value" : "contain"
+			},
+			"background_color" :
+			{
+				"index" : 6,
+				"order" : 12,
+				"text" : "Background Color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+
+			"sep_colors" :
+			{
+				"index" : 76,
+				"order" : 13,
+				"text" : "Colors",
+				"type" : "separator"
+			},
+			"colorful" :
+			{
+				"index" : 10,
+				"order" : 14,
+				"text" : "Random Color",
+				"type" : "bool",
+				"value" : true
+			},
+			"splat_color" :
+			{
+				"condition" : "!colorful.value",
+				"index" : 11,
+				"order" : 15,
+				"text" : "Splat Color",
+				"type" : "color",
+				"value" : "0 1 0"
+			},
+			"more_colors" :
+			{
+				"condition" : "!colorful.value",
+				"index" : 12,
+				"order" : 16,
+				"text" : "More Colors",
+				"type" : "bool",
+				"value" : false
+			},
+			"splat_color_2" :
+			{
+				"condition" : "more_colors.value && !colorful.value",
+				"index" : 13,
+				"order" : 17,
+				"text" : "Splat Color 2",
+				"type" : "color",
+				"value" : "0 1 1"
+			},
+			"splat_color_3" :
+			{
+				"condition" : "more_colors.value && !colorful.value",
+				"index" : 14,
+				"order" : 18,
+				"text" : "Splat Color 3",
+				"type" : "color",
+				"value" : "0 0 1"
+			},
+			"splat_color_4" :
+			{
+				"condition" : "more_colors.value && !colorful.value",
+				"index" : 15,
+				"order" : 19,
+				"text" : "Splat Color 4",
+				"type" : "color",
+				"value" : "1 0 0"
+			},
+			"splat_color_5" :
+			{
+				"condition" : "more_colors.value && !colorful.value",
+				"index" : 16,
+				"order" : 20,
+				"text" : "Splat Color 5",
+				"type" : "color",
+				"value" : "0.9411764705882353 1 0"
+			},
+			"freq_color_mapping" :
+			{
+				"index" : 39,
+				"order" : 21,
+				"text" : "Frequency Color Mapping",
+				"type" : "bool",
+				"value" : true
+			},
+			"band_color_subbass" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 40,
+				"order" : 22,
+				"text" : "Sub-Bass Color",
+				"type" : "color",
+				"value" : "1 0.24 0"
+			},
+			"band_color_bass" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 41,
+				"order" : 23,
+				"text" : "Bass Color",
+				"type" : "color",
+				"value" : "1 0.72 0"
+			},
+			"band_color_lowmid" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 42,
+				"order" : 24,
+				"text" : "Low-Mid Color",
+				"type" : "color",
+				"value" : "0.38 1 0"
+			},
+			"band_color_mid" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 43,
+				"order" : 25,
+				"text" : "Mid Color",
+				"type" : "color",
+				"value" : "0 1 0.76"
+			},
+			"band_color_highmid" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 44,
+				"order" : 26,
+				"text" : "High-Mid Color",
+				"type" : "color",
+				"value" : "0 0.19 1"
+			},
+			"band_color_treble" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 45,
+				"order" : 27,
+				"text" : "Treble Color",
+				"type" : "color",
+				"value" : "0.8 0 1"
+			},
+			"dynamic_colors" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 47,
+				"order" : 28,
+				"text" : "Dynamic Color Shift",
+				"type" : "bool",
+				"value" : false
+			},
+			"hue_shift_speed" :
+			{
+				"condition" : "freq_color_mapping.value && dynamic_colors.value",
+				"fraction" : true,
+				"index" : 48,
+				"max" : 1.0,
+				"min" : 0.01,
+				"order" : 29,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Color Shift Speed",
+				"type" : "slider",
+				"value" : 0.05
+			},
+
+			"sep_simulation" :
+			{
+				"index" : 77,
+				"order" : 30,
+				"text" : "Simulation",
+				"type" : "separator"
+			},
+			"simulation_resolution" :
+			{
+				"index" : 21,
+				"options" :
+				[
+					{
+						"label" : "32",
+						"value" : "32"
+					},
+					{
+						"label" : "64",
+						"value" : "64"
+					},
+					{
+						"label" : "128",
+						"value" : "128"
+					},
+					{
+						"label" : "256",
+						"value" : "256"
+					}
+				],
+				"order" : 31,
+				"text" : "Simulation Resolution",
+				"type" : "combo",
+				"value" : "256"
+			},
+			"dye_resolution" :
+			{
+				"index" : 22,
+				"options" :
+				[
+					{
+						"label" : "32",
+						"value" : "32"
+					},
+					{
+						"label" : "64",
+						"value" : "64"
+					},
+					{
+						"label" : "128",
+						"value" : "128"
+					},
+					{
+						"label" : "256",
+						"value" : "256"
+					},
+					{
+						"label" : "512",
+						"value" : "512"
+					},
+					{
+						"label" : "1024",
+						"value" : "1024"
+					},
+					{
+						"label" : "2048",
+						"value" : "2048"
+					},
+					{
+						"label" : "4096",
+						"value" : "4096"
+					}
+				],
+				"order" : 32,
+				"text" : "Dye Resolution",
+				"type" : "combo",
+				"value" : "512"
+			},
+			"density_diffusion" :
+			{
+				"fraction" : true,
+				"index" : 23,
+				"max" : 1,
+				"min" : 0.9,
+				"order" : 33,
+				"precision" : 3,
+				"step" : 0.001,
+				"text" : "Density Diffusion",
+				"type" : "slider",
+				"value" : 0.97
+			},
+			"velocity_diffusion" :
+			{
+				"fraction" : true,
+				"index" : 24,
+				"max" : 1,
+				"min" : 0.9,
+				"order" : 34,
+				"precision" : 3,
+				"step" : 0.001,
+				"text" : "Velocity Diffusion",
+				"type" : "slider",
+				"value" : 0.98
+			},
+			"pressure_diffusion" :
+			{
+				"fraction" : true,
+				"index" : 25,
+				"max" : 1,
+				"min" : 0,
+				"order" : 35,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Pressure Diffusion",
+				"type" : "slider",
+				"value" : 0.8
+			},
+			"vorticity" :
+			{
+				"fraction" : false,
+				"index" : 26,
+				"max" : 50,
+				"min" : 0,
+				"order" : 36,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 30
+			},
+			"splat_radius" :
+			{
+				"fraction" : true,
+				"index" : 27,
+				"max" : 1,
+				"min" : 0.01,
+				"order" : 37,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Splat Radius",
+				"type" : "slider",
+				"value" : 0.3
+			},
+			"shading" :
+			{
+				"index" : 28,
+				"order" : 38,
+				"text" : "Shading",
+				"type" : "bool",
+				"value" : true
+			},
+
+			"sep_bloom" :
+			{
+				"index" : 78,
+				"order" : 39,
+				"text" : "Bloom",
+				"type" : "separator"
+			},
+			"enable_bloom" :
+			{
+				"index" : 30,
+				"order" : 40,
+				"text" : "Enable Bloom",
+				"type" : "bool",
+				"value" : true
+			},
+			"bloom_intensity" :
+			{
+				"fraction" : true,
+				"index" : 31,
+				"max" : 2,
+				"min" : 0.01,
+				"order" : 41,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Bloom Intensity",
+				"type" : "slider",
+				"value" : 0.05
+			},
+			"bloom_threshold" :
+			{
+				"fraction" : true,
+				"index" : 32,
+				"max" : 1,
+				"min" : 0,
+				"order" : 42,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Bloom Threshold",
+				"type" : "slider",
+				"value" : 0.92
+			},
+
+			"sep_audio" :
+			{
+				"index" : 79,
+				"order" : 43,
+				"text" : "Audio",
+				"type" : "separator"
+			},
+			"audio_responsive" :
+			{
+				"index" : 17,
+				"order" : 44,
+				"text" : "Audio Responsive",
+				"type" : "bool",
+				"value" : true
+			},
+			"sound_sensitivity" :
+			{
+				"condition" : "audio_responsive.value",
+				"fraction" : true,
+				"index" : 18,
+				"max" : 10,
+				"min" : 0,
+				"order" : 45,
+				"precision" : 3,
+				"step" : 0.01,
+				"text" : "Sound Sensitivity",
+				"type" : "slider",
+				"value" : 5
+			},
+			"frequency_range" :
+			{
+				"condition" : "audio_responsive.value",
+				"fraction" : false,
+				"index" : 19,
+				"max" : 62,
+				"min" : 1,
+				"order" : 46,
+				"text" : "Frequency Range",
+				"type" : "slider",
+				"value" : 61
+			},
+			"frequency_range_start" :
+			{
+				"condition" : "audio_responsive.value",
+				"fraction" : false,
+				"index" : 20,
+				"max" : 62,
+				"min" : 0,
+				"order" : 47,
+				"text" : "Frequency Range Start",
+				"type" : "slider",
+				"value" : 0
+			},
+			"smooth_alpha" :
+			{
+				"condition" : "audio_responsive.value",
+				"fraction" : true,
+				"index" : 34,
+				"max" : 1.0,
+				"min" : 0.1,
+				"order" : 48,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Smoothing",
+				"type" : "slider",
+				"value" : 0.35
+			},
+			"beat_detection" :
+			{
+				"condition" : "audio_responsive.value",
+				"index" : 35,
+				"order" : 49,
+				"text" : "Beat Detection",
+				"type" : "bool",
+				"value" : true
+			},
+			"beat_threshold" :
+			{
+				"condition" : "audio_responsive.value && beat_detection.value",
+				"fraction" : true,
+				"index" : 36,
+				"max" : 0.5,
+				"min" : 0.05,
+				"order" : 50,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Beat Threshold",
+				"type" : "slider",
+				"value" : 0.12
+			},
+			"beat_burst_mult" :
+			{
+				"condition" : "audio_responsive.value && beat_detection.value",
+				"fraction" : true,
+				"index" : 37,
+				"max" : 4.0,
+				"min" : 1.0,
+				"order" : 51,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Beat Burst Multiplier",
+				"type" : "slider",
+				"value" : 2.0
+			},
+			"stereo_awareness" :
+			{
+				"condition" : "audio_responsive.value",
+				"index" : 38,
+				"order" : 52,
+				"text" : "Stereo Awareness",
+				"type" : "bool",
+				"value" : true
+			},
+			"band_layers" :
+			{
+				"index" : 46,
+				"order" : 53,
+				"text" : "Band Layers (bass behind, treble in front)",
+				"type" : "bool",
+				"value" : false
+			},
+
+			"sep_performance" :
+			{
+				"index" : 80,
+				"order" : 54,
+				"text" : "Performance",
+				"type" : "separator"
+			},
+			"paused" :
+			{
+				"index" : 29,
+				"order" : 55,
+				"text" : "Paused",
+				"type" : "bool",
+				"value" : false
+			},
+			"ignore_fps_limit" :
+			{
+				"index" : 33,
+				"order" : 56,
+				"text" : "Ignore FPS Limit",
+				"type" : "bool",
+				"value" : false
+			},
+
+			"sep_per_band" :
+			{
+				"index" : 81,
+				"order" : 57,
+				"text" : "Per-Band Tuning",
+				"type" : "separator"
+			},
+			"per_band_tuning" :
+			{
+				"index" : 49,
+				"order" : 58,
+				"text" : "Enable Per-Band Tuning",
+				"type" : "bool",
+				"value" : false
+			},
+			"sep_band_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 68,
+				"order" : 59,
+				"text" : "Sub-Bass",
+				"type" : "separator"
+			},
+			"band_size_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 50,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 60,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 56,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 61,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 62,
+				"max" : 100,
+				"min" : 0,
+				"order" : 62,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 50
+			},
+			"sep_band_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 69,
+				"order" : 63,
+				"text" : "Bass",
+				"type" : "separator"
+			},
+			"band_size_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 51,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 64,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 57,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 65,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 63,
+				"max" : 100,
+				"min" : 0,
+				"order" : 66,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 40
+			},
+			"sep_band_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 70,
+				"order" : 67,
+				"text" : "Low-Mid",
+				"type" : "separator"
+			},
+			"band_size_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 52,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 68,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 58,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 69,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 64,
+				"max" : 100,
+				"min" : 0,
+				"order" : 70,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 30
+			},
+			"sep_band_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 71,
+				"order" : 71,
+				"text" : "Mid",
+				"type" : "separator"
+			},
+			"band_size_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 53,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 72,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 59,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 73,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 65,
+				"max" : 100,
+				"min" : 0,
+				"order" : 74,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 20
+			},
+			"sep_band_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 72,
+				"order" : 75,
+				"text" : "High-Mid",
+				"type" : "separator"
+			},
+			"band_size_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 54,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 76,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 60,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 77,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 66,
+				"max" : 100,
+				"min" : 0,
+				"order" : 78,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 15
+			},
+			"sep_band_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 73,
+				"order" : 79,
+				"text" : "Treble",
+				"type" : "separator"
+			},
+			"band_size_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 55,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 80,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Size",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_intensity_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : true,
+				"index" : 61,
+				"max" : 5.0,
+				"min" : 0.1,
+				"order" : 81,
+				"precision" : 1,
+				"step" : 0.1,
+				"text" : "Intensity",
+				"type" : "slider",
+				"value" : 1.0
+			},
+			"band_vorticity_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"fraction" : false,
+				"index" : 67,
+				"max" : 100,
+				"min" : 0,
+				"order" : 82,
+				"text" : "Vorticity",
+				"type" : "slider",
+				"value" : 10
+			}
+		},
+		"supportsaudioprocessing" : true
+	},
+	"preview" : "preview.gif",
+	"ratingsex" : "none",
+	"ratingviolence" : "none",
+	"tags" : [ "Abstract" ],
+	"title" : "Colorful Fluid Animation [Audio Responsive]",
+	"type" : "Web",
+	"version" : 5,
+	"visibility" : "public",
+	"workshopid" : "",
+	"workshopurl" : ""
+}
