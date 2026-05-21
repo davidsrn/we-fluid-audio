@@ -336,6 +336,14 @@
 				"type" : "bool",
 				"value" : false
 			},
+			"sep_band_subbass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 68,
+				"order" : 150,
+				"text" : "Sub-Bass",
+				"type" : "separator"
+			},
 			"band_size_subbass" :
 			{
 				"condition" : "per_band_tuning.value",
@@ -343,10 +351,10 @@
 				"index" : 50,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 150,
+				"order" : 151,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Sub-Bass — Size",
+				"text" : "Size",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -357,10 +365,10 @@
 				"index" : 56,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 151,
+				"order" : 152,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Sub-Bass — Intensity",
+				"text" : "Intensity",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -371,10 +379,18 @@
 				"index" : 62,
 				"max" : 100,
 				"min" : 0,
-				"order" : 152,
-				"text" : "Sub-Bass — Vorticity",
+				"order" : 153,
+				"text" : "Vorticity",
 				"type" : "slider",
 				"value" : 50
+			},
+			"sep_band_bass" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 69,
+				"order" : 154,
+				"text" : "Bass",
+				"type" : "separator"
 			},
 			"band_size_bass" :
 			{
@@ -383,10 +399,10 @@
 				"index" : 51,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 153,
+				"order" : 155,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Bass — Size",
+				"text" : "Size",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -397,10 +413,10 @@
 				"index" : 57,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 154,
+				"order" : 156,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Bass — Intensity",
+				"text" : "Intensity",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -411,10 +427,18 @@
 				"index" : 63,
 				"max" : 100,
 				"min" : 0,
-				"order" : 155,
-				"text" : "Bass — Vorticity",
+				"order" : 157,
+				"text" : "Vorticity",
 				"type" : "slider",
 				"value" : 40
+			},
+			"sep_band_lowmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 70,
+				"order" : 158,
+				"text" : "Low-Mid",
+				"type" : "separator"
 			},
 			"band_size_lowmid" :
 			{
@@ -423,10 +447,10 @@
 				"index" : 52,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 156,
+				"order" : 159,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Low-Mid — Size",
+				"text" : "Size",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -437,10 +461,10 @@
 				"index" : 58,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 157,
+				"order" : 160,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Low-Mid — Intensity",
+				"text" : "Intensity",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -451,10 +475,18 @@
 				"index" : 64,
 				"max" : 100,
 				"min" : 0,
-				"order" : 158,
-				"text" : "Low-Mid — Vorticity",
+				"order" : 161,
+				"text" : "Vorticity",
 				"type" : "slider",
 				"value" : 30
+			},
+			"sep_band_mid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 71,
+				"order" : 162,
+				"text" : "Mid",
+				"type" : "separator"
 			},
 			"band_size_mid" :
 			{
@@ -463,10 +495,10 @@
 				"index" : 53,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 159,
+				"order" : 163,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Mid — Size",
+				"text" : "Size",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -477,10 +509,10 @@
 				"index" : 59,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 160,
+				"order" : 164,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Mid — Intensity",
+				"text" : "Intensity",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -491,10 +523,18 @@
 				"index" : 65,
 				"max" : 100,
 				"min" : 0,
-				"order" : 161,
-				"text" : "Mid — Vorticity",
+				"order" : 165,
+				"text" : "Vorticity",
 				"type" : "slider",
 				"value" : 20
+			},
+			"sep_band_highmid" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 72,
+				"order" : 166,
+				"text" : "High-Mid",
+				"type" : "separator"
 			},
 			"band_size_highmid" :
 			{
@@ -503,10 +543,10 @@
 				"index" : 54,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 162,
+				"order" : 167,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "High-Mid — Size",
+				"text" : "Size",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -517,10 +557,10 @@
 				"index" : 60,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 163,
+				"order" : 168,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "High-Mid — Intensity",
+				"text" : "Intensity",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -531,10 +571,18 @@
 				"index" : 66,
 				"max" : 100,
 				"min" : 0,
-				"order" : 164,
-				"text" : "High-Mid — Vorticity",
+				"order" : 169,
+				"text" : "Vorticity",
 				"type" : "slider",
 				"value" : 15
+			},
+			"sep_band_treble" :
+			{
+				"condition" : "per_band_tuning.value",
+				"index" : 73,
+				"order" : 170,
+				"text" : "Treble",
+				"type" : "separator"
 			},
 			"band_size_treble" :
 			{
@@ -543,10 +591,10 @@
 				"index" : 55,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 165,
+				"order" : 171,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Treble — Size",
+				"text" : "Size",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -557,10 +605,10 @@
 				"index" : 61,
 				"max" : 5.0,
 				"min" : 0.1,
-				"order" : 166,
+				"order" : 172,
 				"precision" : 1,
 				"step" : 0.1,
-				"text" : "Treble — Intensity",
+				"text" : "Intensity",
 				"type" : "slider",
 				"value" : 1.0
 			},
@@ -571,8 +619,8 @@
 				"index" : 67,
 				"max" : 100,
 				"min" : 0,
-				"order" : 167,
-				"text" : "Treble — Vorticity",
+				"order" : 173,
+				"text" : "Vorticity",
 				"type" : "slider",
 				"value" : 10
 			},
