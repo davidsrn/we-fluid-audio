@@ -48,6 +48,8 @@ Key fields relevant to audio:
 | `BEAT_BURST_MULT` | 2.0 | Splat count multiplier on a beat hit |
 | `STEREO_AWARENESS` | true | Bias splat x-position using L/R channel ratio |
 | `FREQ_COLOR_MAPPING` | true | Use per-band hue ranges instead of random color |
+| `DYNAMIC_COLORS` | false | Shift hues over time (rainbow cycle) |
+| `HUE_SHIFT_SPEED` | 0.05 | Hue cycles per second — 0.05 = one full cycle every 20 s |
 | `BAND_HUES` | `[0.04,0.12,0.27,0.465,0.635,0.80]` | Center hue (0–1) for each of the 6 bands |
 | `BAND_LAYERS` | false | Render bass/mid/treble to separate depth layers |
 
@@ -170,7 +172,8 @@ if BEAT_DETECTION and delta > BEAT_THRESHOLD and cooldown[b] == 0:
 
 - `COLORFUL=false` → returns the user's fixed splat color (`POINTER_COLOR`)
 - `COLORFUL=true, FREQ_COLOR_MAPPING=false` → fully random hue (`generateColor()`)
-- `COLORFUL=true, FREQ_COLOR_MAPPING=true` → random hue within `[hueMin, hueMax]`, derived from `BAND_HUES[b] ± 0.06`
+- `COLORFUL=true, FREQ_COLOR_MAPPING=true, DYNAMIC_COLORS=false` → random hue within `[hueMin, hueMax]`, derived from `BAND_HUES[b] ± 0.06`
+- `COLORFUL=true, FREQ_COLOR_MAPPING=true, DYNAMIC_COLORS=true` → same, plus a time-based offset `(Date.now() * HUE_SHIFT_SPEED / 1000) % 1` added to the hue, making all bands cycle through the rainbow together at the configured speed
 
 All colors are scaled to ~0.15 peak channel value before `colorMult` is applied. This keeps splat brightness consistent regardless of the WebGL internal scale.
 

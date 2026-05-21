@@ -55,6 +55,8 @@ let config = {
     BEAT_BURST_MULT: 2.0,
     STEREO_AWARENESS: true,
     FREQ_COLOR_MAPPING: true,
+    DYNAMIC_COLORS: false,
+    HUE_SHIFT_SPEED: 0.05,
     BAND_HUES: [0.04, 0.12, 0.27, 0.465, 0.635, 0.80],
     BAND_LAYERS: false,
 };
@@ -168,6 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (properties.beat_burst_mult)    config.BEAT_BURST_MULT    = properties.beat_burst_mult.value;
             if (properties.stereo_awareness)   config.STEREO_AWARENESS   = properties.stereo_awareness.value;
             if (properties.freq_color_mapping) config.FREQ_COLOR_MAPPING = properties.freq_color_mapping.value;
+            if (properties.dynamic_colors)     config.DYNAMIC_COLORS     = properties.dynamic_colors.value;
+            if (properties.hue_shift_speed)    config.HUE_SHIFT_SPEED    = properties.hue_shift_speed.value;
             if (properties.band_layers) {
                 config.BAND_LAYERS = properties.band_layers.value;
                 initFramebuffers();
@@ -1384,7 +1388,8 @@ function generateBandColor (hueMin, hueMax) {
     if (!config.FREQ_COLOR_MAPPING) {
         return generateColor();
     }
-    const hue = hueMin + Math.random() * (hueMax - hueMin);
+    const offset = config.DYNAMIC_COLORS ? (Date.now() * config.HUE_SHIFT_SPEED / 1000) % 1 : 0;
+    const hue = (hueMin + Math.random() * (hueMax - hueMin) + offset) % 1;
     let c = HSVtoRGB(hue, 1.0, 1.0);
     c.r *= 0.15;
     c.g *= 0.15;

@@ -297,6 +297,29 @@
 				"type" : "color",
 				"value" : "0.8 0 1"
 			},
+			"dynamic_colors" :
+			{
+				"condition" : "freq_color_mapping.value",
+				"index" : 47,
+				"order" : 147,
+				"text" : "Dynamic Color Shift",
+				"type" : "bool",
+				"value" : false
+			},
+			"hue_shift_speed" :
+			{
+				"condition" : "freq_color_mapping.value && dynamic_colors.value",
+				"fraction" : true,
+				"index" : 48,
+				"max" : 1.0,
+				"min" : 0.01,
+				"order" : 148,
+				"precision" : 2,
+				"step" : 0.01,
+				"text" : "Color Shift Speed",
+				"type" : "slider",
+				"value" : 0.05
+			},
 			"band_layers" :
 			{
 				"index" : 46,

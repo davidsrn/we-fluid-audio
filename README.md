@@ -48,6 +48,8 @@ Subscribe on the Steam Workshop: *(link coming soon)*
 | Beat Burst Multiplier | slider | Splat count multiplier on beat hit (1–4×) |
 | Stereo Awareness | bool | L/R channel bias splat position |
 | Frequency Color Mapping | bool | Per-band hue ranges vs. random colors |
+| Dynamic Color Shift | bool | Hues cycle through the rainbow over time |
+| Color Shift Speed | slider | How fast the hue cycles (0.01–1.0 cycles/sec) |
 | Sub-Bass / Bass / … / Treble Color | color | Hue center for each frequency band |
 | Band Layers | bool | Render bass, mid, treble to separate depth layers |
 | Simulation Resolution | combo | Velocity field resolution |
